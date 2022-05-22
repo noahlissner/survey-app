@@ -40,13 +40,8 @@ const Landing = () => {
 				</Link>
 			</main>
 			<img
-				className='absolute h-[30rem] bottom-[50rem] right-[40rem] pointer-events-none'
-				src='https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/4bf62a87-6156-422a-94a1-d53d874ce000/public'
-				alt=''
-			/>
-			<img
-				className='absolute h-[70rem] bottom-[-15rem] right-[-15rem] pointer-events-none'
-				src='https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/5b077803-c9c3-4d2c-bb82-6340ca534500/public'
+				className='absolute h-[70rem] bottom-[-10rem] right-[-10rem] pointer-events-none'
+				src='https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/521d5abb-c4fb-460e-a18e-b91bcc4a8500/public'
 				alt=''
 			/>
 		</div>
