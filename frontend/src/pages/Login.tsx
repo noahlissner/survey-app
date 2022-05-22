@@ -10,6 +10,7 @@ import Input from "../components/Input";
 import { useSelector, useDispatch } from "react-redux";
 import { login, reset } from "../features/auth/authSlice";
 import { AppDispatch } from "../app/store";
+import Navigation from "../components/Navigation";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -57,36 +58,15 @@ const Login = () => {
   };
 
   return (
-    <div className="relative overflow-hidden h-screen w-screen bg-gradient-to-r from-blue-100 to-blue-300 flex justify-center">
-      {/* Refactor into its own component */}
-      <nav className="fixed w-full flex justify-between items-center py-5 px-10">
-        <div className="flex items-center gap-5">
-          <img
-            className="mr-10"
-            src="http://acmelogos.com/images/logo-7.svg"
-            alt="Logo"
-          />
-          <Link className="font-medium" to="/">
-            Home
-          </Link>
-          <Link className="font-medium" to="/register">
-            Join
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <Link className="font-medium flex items-center gap-2" to="/login">
-            <FiLogIn /> Login
-          </Link>
-        </div>
-      </nav>
-
+    <div className="relative overflow-hidden h-screen w-screen bg-gradient-to-r from-blue-100 to-blue-300 dark:from-blue-700 dark:to-blue-800 flex justify-center">
+      <Navigation />
       <main className="h-full w-9/12 flex justify-center flex-col">
-        <h1 className="font-semibold text-6xl mb-7">
+        <h1 className="font-semibold text-6xl mb-7 dark:text-white">
           Login to your account
           <span className="text-blue-400 text-6xl">.</span>
         </h1>
         <div className="flex gap-2 mb-12 font-medium">
-          <p>Not a member?</p>
+          <p className="text-gray-400 dark:text-gray-500">Not a member?</p>
           <Link to="/register" className="text-blue-400">
             Register
           </Link>
@@ -102,7 +82,12 @@ const Login = () => {
               name="email"
               label="Email"
               type="text"
-              icon={<IoMailOutline />}
+              icon={
+                <IoMailOutline
+                  size={20}
+                  className="text-black dark:text-white"
+                />
+              }
             />
             <Input
               onChange={onChange}
@@ -110,7 +95,12 @@ const Login = () => {
               label="Password"
               name="password"
               type="password"
-              icon={<IoEyeOutline />}
+              icon={
+                <IoEyeOutline
+                  size={20}
+                  className="text-black dark:text-white"
+                />
+              }
             />
           </div>
           <Button value="Login" />
