@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
 
 // Get user from localStorage
-const user = JSON.parse(localStorage.getItem("user"));
+const userJSON = localStorage.getItem("user");
+const user = userJSON && JSON.parse(userJSON);
 
 const initialState = {
   user: user ? user : null,
@@ -17,7 +18,7 @@ export const register = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       return await authService.register(user);
-    } catch (error) {
+    } catch (error: any) {
       const message =
         (error.response &&
           error.response.data &&
@@ -33,7 +34,7 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   try {
     return await authService.login(user);
-  } catch (error) {
+  } catch (error: any) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
       error.message ||
@@ -67,7 +68,7 @@ export const authSlice = createSlice({
         state.isSuccess = true;
         state.user = action.payload;
       })
-      .addCase(register.rejected, (state, action) => {
+      .addCase(register.rejected, (state: any, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -80,15 +81,16 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
+      })
+      .addCase(login.rejected, (state: any, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
       });
-    addCase(login.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload;
-      state.user = null;
-    }).addCase(logout.fulfilled, (state) => {
-      state.user = null;
-    });
   },
 });
 
