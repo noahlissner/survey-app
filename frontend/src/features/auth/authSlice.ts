@@ -13,9 +13,17 @@ const initialState = {
   message: "",
 };
 
+// Type for userData in register
+type userData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
+
 export const register = createAsyncThunk(
   "auth/register",
-  async (user, thunkAPI) => {
+  async (user: userData, thunkAPI) => {
     try {
       return await authService.register(user);
     } catch (error: any) {
