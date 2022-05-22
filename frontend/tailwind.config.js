@@ -1,5 +1,6 @@
 module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			colors: {
@@ -31,6 +32,8 @@ module.exports = {
 					'https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/4bf62a87-6156-422a-94a1-d53d874ce000/public',
 				spaceman2:
 					'https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/9e84d9f6-690f-4e10-c09d-be3578372a00/public',
+				earthsatellite:
+					'https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/521d5abb-c4fb-460e-a18e-b91bcc4a8500/public',
 			},
 			fontFamily: {
 				sans: 'Poppins',
