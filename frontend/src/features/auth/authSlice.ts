@@ -14,7 +14,7 @@ const initialState = {
 };
 
 // Type for userData in register
-type userData = {
+type registerData = {
   firstName: string;
   lastName: string;
   email: string;
@@ -23,7 +23,7 @@ type userData = {
 
 export const register = createAsyncThunk(
   "auth/register",
-  async (user: userData, thunkAPI) => {
+  async (user: registerData, thunkAPI) => {
     try {
       return await authService.register(user);
     } catch (error: any) {
@@ -38,18 +38,29 @@ export const register = createAsyncThunk(
   }
 );
 
+// Type for userData in register
+type loginData = {
+  email: string;
+  password: string;
+};
+
 // Login user
-export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
-  try {
-    return await authService.login(user);
-  } catch (error: any) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    return thunkAPI.rejectWithValue(message);
+export const login = createAsyncThunk(
+  "auth/login",
+  async (user: loginData, thunkAPI) => {
+    try {
+      return await authService.login(user);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
