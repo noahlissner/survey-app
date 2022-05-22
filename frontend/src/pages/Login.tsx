@@ -113,6 +113,11 @@ const Login = () => {
           <Button value="Login" />
         </form>
       </main>
+      <img
+        className="absolute h-[70rem] bottom-[-15rem] right-[-15rem] pointer-events-none"
+        src="https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/519304df-20e8-4d86-5bd7-373ac154b200/public"
+        alt=""
+      />
     </div>
   );
 };
