@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
+import { IoEyeOutline, IoMailOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
@@ -101,6 +102,7 @@ const Login = () => {
               name="email"
               label="Email"
               type="text"
+              icon={<IoMailOutline />}
             />
             <Input
               onChange={onChange}
@@ -108,6 +110,7 @@ const Login = () => {
               label="Password"
               name="password"
               type="password"
+              icon={<IoEyeOutline />}
             />
           </div>
           <Button value="Login" />
