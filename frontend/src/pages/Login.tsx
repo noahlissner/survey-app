@@ -60,10 +60,10 @@ const Login = () => {
   return (
     <div className="relative overflow-hidden h-screen w-screen bg-gradient-to-r from-blue-100 to-blue-300 dark:from-blue-700 dark:to-blue-800 flex justify-center">
       <Navigation />
-      <main className="h-full w-9/12 flex justify-center flex-col">
-        <h1 className="font-semibold text-6xl mb-7 dark:text-white">
+      <main className="h-full w-full max-w-[1200px] p-5 sm:p-0 sm:w-9/12 flex justify-center flex-col">
+        <h1 className="font-semibold text-4xl sm:text-6xl mb-5 sm:mb-7 dark:text-white">
           Login to your account
-          <span className="text-blue-400 text-6xl">.</span>
+          <span className="text-blue-400 text-4xl sm:text-6xl">.</span>
         </h1>
         <div className="flex gap-2 mb-12 font-medium">
           <p className="text-gray-400 dark:text-gray-500">Not a member?</p>
@@ -107,7 +107,7 @@ const Login = () => {
         </form>
       </main>
       <img
-        className="absolute h-[70rem] bottom-[-15rem] right-[-15rem] pointer-events-none"
+        className="absolute h-[70rem] bottom-[-15rem] right-[-15rem] pointer-events-none hidden xl:block"
         src="https://imagedelivery.net/3ecvmLCFkS-FijMWb0qFvQ/519304df-20e8-4d86-5bd7-373ac154b200/public"
         alt=""
       />
