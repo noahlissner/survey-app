@@ -10,7 +10,7 @@ import Sidebar from "../containers/Sidebar";
 import Switcher from "../components/Switcher";
 import DashboardTopNav from "../components/DashboardTopNav";
 
-const Dashboard = () => {
+const Home = () => {
   const { user } = useSelector((state: any) => state.auth);
 
   const navigate = useNavigate();
@@ -43,4 +43,4 @@ const Dashboard = () => {
     </div>
   );
 };
-export default Dashboard;
+export default Home;
