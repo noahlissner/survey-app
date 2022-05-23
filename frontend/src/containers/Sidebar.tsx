@@ -1,7 +1,12 @@
 import SidebarItem from "../components/SidebarItem";
-import { IoGrid, IoFolder, IoSettings } from "react-icons/io5";
+import {
+  IoGrid,
+  IoFolder,
+  IoSettings,
+  IoExtensionPuzzle,
+} from "react-icons/io5";
 
-const Sidebar = ({ onClick }: any) => {
+const Sidebar = () => {
   return (
     <div className="max-w-[300px] flex-1 bg-blue-300 dark:bg-blue-850">
       <section className="w-full">
@@ -10,14 +15,11 @@ const Sidebar = ({ onClick }: any) => {
             LOGO
           </h1>
         </div>
-        <nav className="mt-10 flex flex-col w-full justify-between text-black dark:text-white">
-          <SidebarItem onClick={onClick} title="Dashboard" icon={<IoGrid />} />
-          <SidebarItem onClick={onClick} title="Surveys" icon={<IoFolder />} />
-          <SidebarItem
-            onClick={onClick}
-            title="Settings"
-            icon={<IoSettings />}
-          />
+        <nav className="mt-10 flex flex-col w-full justify-between">
+          <SidebarItem title="Dashboard" icon={<IoGrid />} />
+          <SidebarItem title="Surveys" icon={<IoFolder />} />
+          <SidebarItem title="Quizes" icon={<IoExtensionPuzzle />} />
+          <SidebarItem title="Settings" icon={<IoSettings />} />
         </nav>
       </section>
     </div>
