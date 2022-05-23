@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.login-register-title {
+  @apply font-semibold text-4xl sm:text-5xl mb-5 sm:mb-7 dark:text-white;
+}
+
 .hamburger-react {
   z-index: 100;
 }
