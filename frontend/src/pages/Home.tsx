@@ -1,8 +1,6 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoNotificationsOutline, IoPersonCircle } from "react-icons/io5";
 import Sidebar from "../containers/Sidebar";
-import Switcher from "../components/Switcher";
 import DashboardTopNav from "../components/DashboardTopNav";
 import Settings from "../containers/Settings";
 
@@ -22,7 +20,7 @@ const Home = () => {
     if (!user) {
       navigate("/");
     }
-  });
+  }, []);
 
   const onLogout = () => {
     dispatch(logout());
