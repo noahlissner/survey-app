@@ -1,8 +1,21 @@
-import { FiLogIn } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { FiLogIn } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 import Navigation from '../components/Navigation';
 
 const Landing = () => {
+  const { user } = useSelector((state: any) => state.auth);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  });
 	return (
 		<div className='relative overflow-hidden h-screen w-screen bg-gradient-to-r from-blue-100 to-blue-300 dark:from-blue-700 dark:to-blue-800 flex justify-center'>
 			<Navigation />
