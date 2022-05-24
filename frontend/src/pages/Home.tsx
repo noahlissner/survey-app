@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../containers/Sidebar";
 import DashboardTopNav from "../components/DashboardTopNav";
-import Settings from "../containers/Settings";
+import Settings from "../containers/Settings/Settings";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
