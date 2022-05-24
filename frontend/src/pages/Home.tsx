@@ -23,7 +23,7 @@ const Home = () => {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/test");
+    navigate("/");
   };
 
   return (
