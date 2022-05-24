@@ -7,7 +7,7 @@ interface Props {
   active: string;
 }
 
-const SettingsNavLink = ({ title, onClick, active }: Props) => {
+const SettingsNavLink: React.FC<Props> = ({ title, onClick, active }) => {
   return (
     <li
       className={`w-fit flex items-center gap-3 cursor-pointer duration-150 ${

@@ -1,10 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import Checkbox from "../../components/Checkbox";
 import Radio from "../../components/Radio";
 
-const SettingsGeneral = () => {
-  const [privacySurvey, setPrivacySurvey] = useState("surveyEveryone");
-  const [privacyQuiz, setPrivacyQuiz] = useState("quizEveryone");
+const SettingsGeneral: React.FC = () => {
+  const [privacySurvey, setPrivacySurvey] = useState<string>("surveyEveryone");
+  const [privacyQuiz, setPrivacyQuiz] = useState<string>("quizEveryone");
 
   const privacySurveyChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPrivacySurvey(e.target.value);
@@ -52,7 +52,7 @@ const SettingsGeneral = () => {
                   onChange={privacyQuizChange}
                 />
                 <Radio
-                  title="Invite Only"
+                  title="Invited Only"
                   name="quiz"
                   id="quizInvite"
                   checked={privacyQuiz}

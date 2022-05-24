@@ -5,8 +5,9 @@ import {
   IoSettings,
   IoExtensionPuzzle,
 } from "react-icons/io5";
+import React from "react";
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   return (
     <div className="max-w-[300px] flex-1 bg-blue-300 dark:bg-blue-850">
       <section className="w-full">

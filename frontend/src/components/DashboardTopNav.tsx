@@ -1,16 +1,16 @@
+import React, { useState } from "react";
 import { IoNotificationsOutline, IoPersonCircle } from "react-icons/io5";
 import Switcher from "./Switcher";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppDispatch } from "../app/store";
+import { AppDispatch, RootState } from "../app/store";
 import { logout, reset } from "../features/auth/authSlice";
 
-const DashboardTopNav = () => {
-  const [showUser, setShowUser] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
+const DashboardTopNav: React.FC = () => {
+  const [showUser, setShowUser] = useState<boolean>(false);
+  const [showNotification, setShowNotification] = useState<boolean>(false);
 
-  const { user } = useSelector((state: any) => state.auth);
+  const { user } = useSelector((state: RootState) => state.auth);
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();

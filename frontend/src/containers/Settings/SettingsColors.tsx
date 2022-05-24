@@ -1,4 +1,6 @@
-const SettingsColors = () => {
+import React from "react";
+
+const SettingsColors: React.FC = () => {
   return (
     <div className="w-full mr-[163px]">
       <div className="flex flex-col items-center text-black dark:text-white">

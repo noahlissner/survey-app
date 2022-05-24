@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { currentPage } from "../features/page/pageSlice";
 import { AppDispatch, RootState } from "../app/store";
+import React from "react";
 
-interface IProps {
+interface Props {
   title: string;
   icon: any;
 }
 
-const SidebarItem = ({ title, icon }: IProps) => {
+const SidebarItem: React.FC<Props> = ({ title, icon }) => {
   const activePage = useSelector((state: RootState) => state.page.value);
 
   const dispatch = useDispatch<AppDispatch>();

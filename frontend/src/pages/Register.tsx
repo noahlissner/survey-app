@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 // Icons
@@ -9,12 +9,19 @@ import { MdMail } from "react-icons/md";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { register, reset } from "../features/auth/authSlice";
-import { AppDispatch } from "../app/store";
+import { AppDispatch, RootState } from "../app/store";
 import Input from "../components/Input";
 import Button from "../components/Button";
 
-const Register = () => {
-  const [formData, setFormData] = useState({
+interface Register {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+const Register: React.FC = () => {
+  const [formData, setFormData] = useState<Register>({
     firstName: "",
     lastName: "",
     email: "",
@@ -27,7 +34,7 @@ const Register = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state: any) => state.auth
+    (state: RootState) => state.auth
   );
 
   useEffect(() => {
@@ -48,7 +55,7 @@ const Register = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const userData = {
+    const userData: Register = {
       firstName,
       lastName,
       email,

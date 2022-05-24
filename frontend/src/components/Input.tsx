@@ -1,5 +1,4 @@
-import { ChangeEvent } from "react";
-import { IconType } from "react-icons";
+import React from "react";
 
 interface Props {
   onChange: any;
@@ -10,7 +9,14 @@ interface Props {
   icon: any;
 }
 
-const Input = ({ onChange, value, label, name, type, icon }: Props) => {
+const Input: React.FC<Props> = ({
+  onChange,
+  value,
+  label,
+  name,
+  type,
+  icon,
+}) => {
   return (
     <div className="relative w-full bg-blue-300 dark:bg-blue-800 rounded-[20px] flex items-center">
       <input

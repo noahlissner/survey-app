@@ -4,7 +4,7 @@ interface Props {
   title: string;
 }
 
-const HomeTitle = ({ title }: Props) => {
+const HomeTitle: React.FC<Props> = ({ title }) => {
   return (
     <h1 className="text-4xl font-semibold text-black dark:text-white">
       {title}

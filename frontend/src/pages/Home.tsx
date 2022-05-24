@@ -1,3 +1,4 @@
+import React from "react";
 import { Navigate } from "react-router-dom";
 import Sidebar from "../containers/Sidebar";
 import DashboardTopNav from "../components/DashboardTopNav";
@@ -7,7 +8,7 @@ import Settings from "../containers/Settings/Settings";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 
-const Home = () => {
+const Home: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const currentPage = useSelector((state: RootState) => state.page.value);
 

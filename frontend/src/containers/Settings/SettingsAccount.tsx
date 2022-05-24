@@ -1,11 +1,17 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
-const SettingsAccount = () => {
+interface Profile {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+const SettingsAccount: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
 
-  const [profile, setProfile] = useState({
+  const [profile, setProfile] = useState<Profile>({
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,

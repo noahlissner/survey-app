@@ -1,10 +1,12 @@
+import React from "react";
+
 interface Props {
   name: string;
   title: string;
   id: string;
 }
 
-const Checkbox = ({ title, name, id }: Props) => {
+const Checkbox: React.FC<Props> = ({ title, name, id }) => {
   return (
     <div className="flex items-center gap-3">
       <input

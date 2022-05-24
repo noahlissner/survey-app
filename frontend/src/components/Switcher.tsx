@@ -6,7 +6,9 @@ import { IoMoon, IoSunny } from "react-icons/io5";
 
 export default function Switcher() {
   const [colorTheme, setTheme] = useDarkSide();
-  const [isOn, setIsOn] = useState(colorTheme === "light" ? true : false);
+  const [isOn, setIsOn] = useState<boolean>(
+    colorTheme === "light" ? true : false
+  );
 
   const toggleDarkMode = () => {
     setIsOn(colorTheme === "light" ? false : true);

@@ -1,3 +1,5 @@
+import React from "react";
+
 interface Props {
   name: string;
   title: string;
@@ -6,7 +8,7 @@ interface Props {
   onChange: any;
 }
 
-const Radio = ({ name, title, id, checked, onChange }: Props) => {
+const Radio: React.FC<Props> = ({ name, title, id, checked, onChange }) => {
   return (
     <div className="flex items-center gap-3">
       <input

@@ -8,16 +8,16 @@ import Input from "../components/Input";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { login, reset } from "../features/auth/authSlice";
-import { AppDispatch } from "../app/store";
+import { AppDispatch, RootState } from "../app/store";
 import Navigation from "../components/Navigation";
 
-interface ILogin {
+interface Login {
   email: string;
   password: string;
 }
 
-const Login = () => {
-  const [formData, setFormData] = useState<ILogin>({
+const Login: React.FC = () => {
+  const [formData, setFormData] = useState<Login>({
     email: "",
     password: "",
   });
@@ -28,7 +28,7 @@ const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state: any) => state.auth
+    (state: RootState) => state.auth
   );
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Login = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const userData = {
+    const userData: Login = {
       email,
       password,
     };
