@@ -6,6 +6,23 @@
   @apply font-semibold text-4xl sm:text-5xl mb-5 sm:mb-7 dark:text-white;
 }
 
+.settings-account-input {
+  @apply text-black p-1.5 rounded-md outline-none mt-1;
+}
+
+.settings-account-btn {
+  @apply self-center py-2 px-10 mt-8 rounded-full bg-blue-400 hover:bg-blue-450 active:scale-[0.97] duration-150;
+}
+
 .hamburger-react {
   z-index: 100;
+}
+
+/* Custom radio + checkbox buttons for home/settings/general */
+.settings-general-radio-checkbox + label span {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.settings-general-radio-checkbox:checked + label span {
+  background-color: #1e8adb;
 }

@@ -10,7 +10,7 @@ interface Props {
 const SettingsNavLink = ({ title, onClick, active }: Props) => {
   return (
     <li
-      className={`flex items-center gap-3 cursor-pointer duration-150 ${
+      className={`w-fit flex items-center gap-3 cursor-pointer duration-150 ${
         active === title
           ? "ml-[-32px] text-black dark:text-white"
           : "text-gray-400 dark:text-gray-100 hover:text-black dark:hover:text-white"
