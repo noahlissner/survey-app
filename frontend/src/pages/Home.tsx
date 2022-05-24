@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Sidebar from "../containers/Sidebar";
 import DashboardTopNav from "../components/DashboardTopNav";
 import Settings from "../containers/Settings/Settings";
@@ -16,16 +16,14 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/");
-    }
-  }, []);
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
 
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
+    navigate("/test");
   };
 
   return (
@@ -46,7 +44,7 @@ const Home = () => {
           {currentPage === "Settings" && <Settings />}
         </section>
       </main>
-      {/* <button onClick={onLogout}>Logout</button> */}
+      <button onClick={onLogout}>Logout</button>
     </div>
   );
 };
