@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import Switcher from "./Switcher";
 import { Squeeze as Hamburger } from "hamburger-react";
 
-const Navigation = () => {
-  const [isOpen, setOpen] = useState(false);
+const Navigation: React.FC = () => {
+  const [isOpen, setOpen] = useState<boolean>(false);
 
   return (
     <nav className="sm:flex fixed w-full items-center py-5 px-10">

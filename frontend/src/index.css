@@ -6,6 +6,52 @@
   @apply font-semibold text-4xl sm:text-5xl mb-5 sm:mb-7 dark:text-white;
 }
 
+.settings-account-input {
+  @apply text-black p-1.5 rounded-md outline-none mt-1;
+}
+
+.settings-account-btn {
+  @apply self-center py-2 px-10 mt-8 rounded-full bg-blue-400 hover:bg-blue-450 active:scale-[0.97] duration-150;
+}
+
 .hamburger-react {
   z-index: 100;
+}
+
+/* Custom radio + checkbox buttons for home/settings/general */
+.settings-general-radio-checkbox + label span {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.settings-general-radio-checkbox:checked + label span {
+  background-color: #1e8adb;
+}
+
+/* Custom color for autofill */
+html.dark input:-webkit-autofill,
+html.dark input:-webkit-autofill:hover,
+html.dark input:-webkit-autofill:focus,
+html.dark textarea:-webkit-autofill,
+html.dark textarea:-webkit-autofill:hover,
+html.dark textarea:-webkit-autofill:focus,
+html.dark select:-webkit-autofill,
+html.dark select:-webkit-autofill:hover,
+html.dark select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #1f1635 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff;
+}
+
+html.light input:-webkit-autofill,
+html.light input:-webkit-autofill:hover,
+html.light input:-webkit-autofill:focus,
+html.light textarea:-webkit-autofill,
+html.light textarea:-webkit-autofill:hover,
+html.light textarea:-webkit-autofill:focus,
+html.light select:-webkit-autofill,
+html.light select:-webkit-autofill:hover,
+html.light select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #c5b4f4 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #000;
 }
