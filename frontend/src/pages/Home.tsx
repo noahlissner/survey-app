@@ -1,30 +1,19 @@
-import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Sidebar from "../containers/Sidebar";
 import DashboardTopNav from "../components/DashboardTopNav";
 import Settings from "../containers/Settings/Settings";
 
 // Redux
-import { useSelector, useDispatch } from "react-redux";
-import { logout, reset } from "../features/auth/authSlice";
-import { AppDispatch, RootState } from "../app/store";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
 const Home = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const currentPage = useSelector((state: RootState) => state.page.value);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
-
   if (!user) {
     return <Navigate to="/" replace />;
   }
-
-  const onLogout = () => {
-    dispatch(logout());
-    dispatch(reset());
-    navigate("/");
-  };
 
   return (
     <div className="flex h-screen">
@@ -44,7 +33,6 @@ const Home = () => {
           {currentPage === "Settings" && <Settings />}
         </section>
       </main>
-      <button onClick={onLogout}>Logout</button>
     </div>
   );
 };
