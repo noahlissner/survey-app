@@ -17,3 +17,12 @@
 .hamburger-react {
   z-index: 100;
 }
+
+/* Custom radio + checkbox buttons for home/settings/general */
+.settings-general-radio-checkbox + label span {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.settings-general-radio-checkbox:checked + label span {
+  background-color: #1e8adb;
+}
