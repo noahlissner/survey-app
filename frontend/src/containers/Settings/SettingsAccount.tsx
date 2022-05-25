@@ -29,7 +29,7 @@ const SettingsAccount: React.FC = () => {
   };
 
   return (
-    <div className="w-full mr-[163px]">
+    <div className="w-full">
       <div className="flex flex-col items-center text-black dark:text-white">
         <h1 className="text-6xl mb-10">Account</h1>
         <div className="flex flex-col items-start gap-10">

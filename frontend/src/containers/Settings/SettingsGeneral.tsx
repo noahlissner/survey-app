@@ -15,7 +15,7 @@ const SettingsGeneral: React.FC = () => {
   };
 
   return (
-    <div className="w-full mr-[163px]">
+    <div className="w-full">
       <div className="flex flex-col items-center text-black dark:text-white">
         <h1 className="text-6xl mb-10">General</h1>
         <form className="flex w-1/2 justify-between gap-10">
