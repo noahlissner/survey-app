@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../app/store";
+import { edit } from "../../features/auth/authSlice";
 
 interface Profile {
   firstName: string;
@@ -17,6 +18,8 @@ const SettingsAccount: React.FC = () => {
     email: user.email,
   });
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const { firstName, lastName, email } = profile;
 
   const profileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +28,7 @@ const SettingsAccount: React.FC = () => {
 
   const profileSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(edit(profile));
     console.log(profile);
   };
 
