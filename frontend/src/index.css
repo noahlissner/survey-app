@@ -27,6 +27,10 @@
   background-color: #1e8adb;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 /* Custom color for autofill */
 html.dark input:-webkit-autofill,
 html.dark input:-webkit-autofill:hover,

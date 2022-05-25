@@ -1,4 +1,4 @@
-import Dashboard from '../containers/Dashboard';
+import Dashboard from "../containers/Dashboard";
 import React from "react";
 import { Navigate } from "react-router-dom";
 import Sidebar from "../containers/Sidebar";
@@ -22,7 +22,7 @@ const Home: React.FC = () => {
       <Sidebar />
       <main className="flex-1 flex flex-col items-center bg-gradient-to-r from-blue-100 to-blue-300 dark:from-blue-700 dark:to-blue-800">
         <DashboardTopNav />
-        <section className="flex-1 w-full">
+        <section className="flex-1 w-full overflow-y-scroll">
           {currentPage === "Dashboard" && <Dashboard />}
           {currentPage === "Surveys" && (
             <h1 className="text-6xl text-white">Surveys</h1>
