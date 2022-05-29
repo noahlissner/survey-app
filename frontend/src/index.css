@@ -14,6 +14,10 @@
   @apply self-center py-2 px-10 mt-8 rounded-full bg-blue-400 hover:bg-blue-450 active:scale-[0.97] duration-150;
 }
 
+.create-survey-save-publish {
+  @apply border-gray-500 rounded-xl w-[120px] h-[50px] font-medium active:scale-[0.97] duration-150;
+}
+
 .hamburger-react {
   z-index: 100;
 }
@@ -25,6 +29,39 @@
 
 .settings-general-radio-checkbox:checked + label span {
   background-color: #1e8adb;
+}
+
+.add-question-option {
+  @apply flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer duration-150;
+}
+
+.add-question-option:first-child {
+  @apply pt-5 rounded-t-xl;
+}
+
+.add-question-option:last-child {
+  @apply pb-5 rounded-b-xl;
+}
+
+.add-question-option > svg {
+  @apply mr-3 w-auto h-5;
+}
+
+.add-question-dropdown {
+  @apply bg-white text-black rounded-xl relative mb-8 flex flex-col;
+}
+
+.add-question-dropdown::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  transform: translateX(-50%) rotate(45deg);
+  bottom: -10px;
+  border-radius: 12px;
+  left: 50%;
+  background-color: #fff;
+  position: absolute;
+  z-index: -1;
 }
 
 *::-webkit-scrollbar {
