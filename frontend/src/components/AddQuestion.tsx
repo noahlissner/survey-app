@@ -9,12 +9,18 @@ import {
   IoCalendarClearOutline,
 } from "react-icons/io5";
 
-const AddQuestion = () => {
+interface Props {
+  onClick: any;
+}
+
+const AddQuestion: React.FC<Props> = ({ onClick }) => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const toggleOpen = () => {};
+  const toggleOpen = () => {
+    setOpen(!open);
+  };
   return (
-    <div className="absolute bottom-10 left-1/2 translate-x-[-50%]">
+    <div className="absolute z-[100] bottom-10 left-1/2 translate-x-[-50%]">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -23,25 +29,25 @@ const AddQuestion = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -50, opacity: 0 }}
           >
-            <div className="add-question-option">
+            <div className="add-question-option" onClick={onClick}>
               <IoReorderTwo />
               <span>Short Text</span>
             </div>
-            <div className="add-question-option">
+            <div className="add-question-option" onClick={onClick}>
               <IoReorderThree />
               <span>Long Text</span>
             </div>
             <div className="h-[2px] w-full bg-gray-300"></div>
-            <div className="add-question-option">
+            <div className="add-question-option" onClick={onClick}>
               <IoRadioButtonOn />
               <span>Multiple Choice</span>
             </div>
-            <div className="add-question-option">
+            <div className="add-question-option" onClick={onClick}>
               <IoCheckboxOutline />
               <span>Checkboxes</span>
             </div>
             <div className="h-[2px] w-full bg-gray-300"></div>
-            <div className="add-question-option">
+            <div className="add-question-option" onClick={onClick}>
               <IoCalendarClearOutline />
               <span>Date</span>
             </div>
@@ -49,8 +55,8 @@ const AddQuestion = () => {
         )}
       </AnimatePresence>
       <button
-        onClick={() => setOpen(!open)}
-        className="bg-blue-400 rounded-xl flex items-center pl-0 p-1.5"
+        onClick={toggleOpen}
+        className="bg-blue-400 rounded-xl flex items-center pl-0 p-1.5 relative z-100"
       >
         <span className="px-4 text-base font-medium">Add Question</span>
         <div className="bg-[#5FB2FC] h-10 w-10 rounded-xl flex items-center justify-center">
