@@ -93,6 +93,35 @@ const editUser = asyncHandler(async (req, res) => {
 	});
 });
 
+const editPassword = asyncHandler(async (req, res) => {
+	if (!req.user) {
+		res.status(401);
+		throw new Error('User not found');
+	}
+
+	const user = await User.findOne({ email: req.user.email });
+
+	if (user && (await bcrypt.compare(req.body.oldPassword, user.password))) {
+		const salt = await bcrypt.genSalt(10);
+		const hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
+
+		const editedUser = await User.findOneAndUpdate(
+			{ email: req.user.email },
+			{ password: hashedPassword }
+		);
+		res.status(200).json({
+			_id: editedUser.id,
+			firstName: editedUser.firstName,
+			lastName: editedUser.lastName,
+			email: editedUser.email,
+			token: generateToken(editedUser._id),
+		});
+	} else {
+		res.status(400);
+		throw new Error('Invalid credentials');
+	}
+});
+
 const generateToken = (id) => {
 	return jwt.sign({ id }, process.env.JWT_SECRET, {
 		expiresIn: '30d',
@@ -103,4 +132,5 @@ module.exports = {
 	registerUser,
 	loginUser,
 	editUser,
+	editPassword,
 };

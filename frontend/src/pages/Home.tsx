@@ -8,6 +8,7 @@ import Settings from "../containers/Settings/Settings";
 // Redux
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
+import Surveys from "../containers/Surveys";
 
 const Home: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -24,9 +25,7 @@ const Home: React.FC = () => {
         <DashboardTopNav />
         <section className="flex-1 w-full overflow-y-scroll">
           {currentPage === "Dashboard" && <Dashboard />}
-          {currentPage === "Surveys" && (
-            <h1 className="text-6xl text-white">Surveys</h1>
-          )}
+          {currentPage === "Surveys" && <Surveys />}
           {currentPage === "Quizes" && (
             <h1 className="text-6xl text-white">Quizes</h1>
           )}
