@@ -32,7 +32,7 @@ const DashboardTopNav: React.FC = () => {
   };
 
   return (
-    <section className="flex justify-end w-full p-4 text-black dark:text-white">
+    <section className="z-[200] flex justify-end w-full p-4 text-black dark:text-white">
       <div className="flex items-center gap-5">
         <div
           onClick={notificationClick}
