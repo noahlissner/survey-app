@@ -38,11 +38,22 @@ const edit = async (userData: any, token: string) => {
 	return response.data;
 };
 
+const editPassword = async (data: any, token: string) => {
+	const config = {
+		headers: {
+			authorization: `Bearer ${token}`,
+		},
+	};
+	const response = await axios.put(API_URL + 'editpassword', data, config);
+	return response.data;
+};
+
 const authService = {
 	register,
 	login,
 	logout,
 	edit,
+	editPassword,
 };
 
 export default authService;
