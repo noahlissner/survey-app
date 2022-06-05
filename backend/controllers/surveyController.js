@@ -8,10 +8,12 @@ const newSurvey = asyncHandler(async (req, res) => {
 		res.status(400);
 	}
 
+	console.log(req.body);
+
 	const survey = await Survey.create({
 		user: req.user.id,
-		questions: req.body.questions,
-		access: req.body.access,
+		questions: req.body,
+		// access: req.body.access,
 	});
 
 	res.status(200).json(survey);

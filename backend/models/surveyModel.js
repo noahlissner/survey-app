@@ -7,17 +7,21 @@ const surveySchema = mongoose.Schema(
 			required: true,
 			ref: 'User',
 		},
-		questions: {
-			type: Array,
-			required: true,
-		},
+		questions: [
+			{
+				surveyType: String,
+				name: String,
+				question: String,
+				id: String,
+				options: [{ id: String, text: String }],
+			},
+		],
 		access: {
 			type: Array,
-			required: false,
 		},
 	},
 	{
-		timestamp: true,
+		timestamps: true,
 	}
 );
 

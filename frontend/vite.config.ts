@@ -6,6 +6,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/api/users/': 'http://localhost:5000',
+			'/api/surveys/': 'http://localhost:5000',
 		},
 	},
 	plugins: [react()],

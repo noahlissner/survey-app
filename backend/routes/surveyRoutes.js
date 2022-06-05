@@ -9,4 +9,7 @@ const {
 } = require('../controllers/surveyController');
 const { protect } = require('../middleware/authMiddleware');
 
-router.post('/edit', protect, editSurvey);
+router.post('/new', protect, newSurvey);
+// router.post('/edit', protect, editSurvey);
+
+module.exports = router;
