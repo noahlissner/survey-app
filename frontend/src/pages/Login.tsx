@@ -8,6 +8,7 @@ import Input from '../components/Input';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { login, reset } from '../features/auth/authSlice';
+import { fetchSurveys } from '../features/surveys/surveySlice';
 import { AppDispatch, RootState } from '../app/store';
 import Navigation from '../components/Navigation';
 
@@ -31,12 +32,16 @@ const Login: React.FC = () => {
 		(state: RootState) => state.auth
 	);
 
+	const { surveys, surveyLoading, surveyError, surveySuccess, surveyMessage } =
+		useSelector((state: RootState) => state.survey);
+
 	useEffect(() => {
 		if (isError) {
 			console.log(message);
 		}
 
 		if (isSuccess || user) {
+			dispatch(fetchSurveys());
 			navigate('/dashboard');
 		}
 
