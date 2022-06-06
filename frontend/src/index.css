@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 .login-register-title {
-	@apply font-semibold text-4xl sm:text-5xl mb-5 sm:mb-7 dark:text-white;
+  @apply font-semibold text-4xl sm:text-5xl mb-5 sm:mb-7 dark:text-white;
 }
 
 .settings-account-input {
-	@apply text-black p-1.5 rounded-md outline-none mt-1;
+  @apply text-black p-1.5 rounded-md outline-none mt-1;
 }
 
 .settings-account-btn {
-	@apply self-center py-2 px-10 mt-8 rounded-full bg-blue-400 hover:bg-blue-450 active:scale-[0.97] duration-150;
+  @apply self-center py-2 px-10 mt-8 rounded-full bg-blue-400 hover:bg-blue-450 active:scale-[0.97] duration-150;
 }
 
 .create-survey-save-publish {
@@ -19,16 +19,16 @@
 }
 
 .hamburger-react {
-	z-index: 100;
+  z-index: 100;
 }
 
 /* Custom radio + checkbox buttons for home/settings/general */
 .settings-general-radio-checkbox + label span {
-	transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .settings-general-radio-checkbox:checked + label span {
-	background-color: #1e8adb;
+  background-color: #1e8adb;
 }
 
 .add-question-option {
@@ -48,7 +48,7 @@
 }
 
 .add-question-dropdown {
-  @apply bg-white text-black rounded-xl relative mb-8 flex flex-col;
+  @apply bg-white text-black rounded-xl relative mb-8 flex flex-col cursor-pointer duration-150;
 }
 
 .add-question-dropdown::before {
@@ -65,7 +65,15 @@
 }
 
 *::-webkit-scrollbar {
-	display: none;
+  display: none;
+}
+
+.new-survey-btn {
+  @apply bg-blue-400 text-white rounded-full py-4 px-8;
+}
+
+.survey-card-btn {
+  @apply h-[35px] w-full rounded-xl text-sm font-medium duration-150;
 }
 
 /* Custom color for autofill */
@@ -78,9 +86,9 @@ html.dark textarea:-webkit-autofill:focus,
 html.dark select:-webkit-autofill,
 html.dark select:-webkit-autofill:hover,
 html.dark select:-webkit-autofill:focus {
-	-webkit-box-shadow: 0 0 0px 1000px #1f1635 inset;
-	transition: background-color 5000s ease-in-out 0s;
-	-webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px #1f1635 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff;
 }
 
 html.light input:-webkit-autofill,
@@ -92,15 +100,15 @@ html.light textarea:-webkit-autofill:focus,
 html.light select:-webkit-autofill,
 html.light select:-webkit-autofill:hover,
 html.light select:-webkit-autofill:focus {
-	-webkit-box-shadow: 0 0 0px 1000px #c5b4f4 inset;
-	transition: background-color 5000s ease-in-out 0s;
-	-webkit-text-fill-color: #000;
+  -webkit-box-shadow: 0 0 0px 1000px #c5b4f4 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #000;
 }
 
 .Toastify__toast-theme--dark {
-	@apply bg-blue-300 dark:bg-blue-700 text-black dark:text-white;
+  @apply bg-blue-300 dark:bg-blue-700 text-black dark:text-white;
 }
 
 .Toastify__progress-bar-theme--dark {
-	@apply bg-blue-400;
+  @apply bg-blue-400;
 }

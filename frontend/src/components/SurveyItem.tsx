@@ -75,46 +75,54 @@ const SurveyItem: React.FC<Props> = ({ item, onChange, createOption }) => {
           </section>
         </main>
       </Reorder.Item>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ scaleY: 0, opacity: 0 }}
-            animate={{ scaleY: 1, opacity: 1 }}
-            exit={{ scaleY: 0 }}
-            className="origin-top mt-[-20px] bg-white text-black p-7 w-full rounded-2xl"
+      {/* <AnimatePresence> */}
+      {isOpen && (
+        <div
+          // initial={{ height: 0, padding: 0 }}
+          // animate={{
+          //   height: "auto",
+          //   // transitionEnd: {
+          //   //   padding: "28px",
+          //   // },
+          // }}
+          // exit={{ height: 0 }}
+          // transition={{ ease: "linear", duration: 0.1 }}
+          className="overflow-hidden origin-top mt-[-20px] bg-white text-black w-full rounded-2xl"
+        >
+          <div
+          // initial={{ opacity: 0, padding: 0 }}
+          // animate={{ opacity: 1, padding: "28px" }}
+          // transition={{ ease: "linear", delay: 0.1, duration: 0.1 }}
           >
+            <p>Question</p>
+            <input
+              type="text"
+              name="question"
+              className="border border-black outline-none p-1 rounded-md"
+              onChange={(e) => onChange(item.id, undefined, e)}
+              value={item.question}
+            />
+          </div>
+          {item.type === "Multiple Choice" || item.type === "Checkboxes" ? (
             <div>
-              <p>Question</p>
-              <input
-                type="text"
-                name="question"
-                className="border border-black outline-none p-1 rounded-md"
-                onChange={(e) => onChange(item.id, undefined, e)}
-                value={item.question}
-              />
-            </div>
-            {item.type === "Multiple Choice" || item.type === "Checkboxes" ? (
-              <div>
-                <button onClick={() => createOption(item.id)}>
-                  New Option
-                </button>
-                <div className="flex flex-wrap">
-                  {item.options?.map((option) => (
-                    <div key={option.id} className="flex w-fit">
-                      <input
-                        type="text"
-                        name="options"
-                        value={option.text}
-                        onChange={(e) => onChange(item.id, option.id, e)}
-                      />
-                    </div>
-                  ))}
-                </div>
+              <button onClick={() => createOption(item.id)}>New Option</button>
+              <div className="flex flex-wrap">
+                {item.options?.map((option) => (
+                  <div key={option.id} className="flex w-fit">
+                    <input
+                      type="text"
+                      name="options"
+                      value={option.text}
+                      onChange={(e) => onChange(item.id, option.id, e)}
+                    />
+                  </div>
+                ))}
               </div>
-            ) : null}
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          ) : null}
+        </div>
+      )}
+      {/* </AnimatePresence> */}
     </>
   );
 };
