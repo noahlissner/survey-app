@@ -24,13 +24,16 @@ const getSurvey = asyncHandler(async (req, res) => {
 	res.status(200).json(survey);
 });
 
-const getSurveys = asyncHandler(async (req, res) => {
+const fetchSurveys = asyncHandler(async (req, res) => {
 	if (!req.user) {
 		res.status(401);
 		throw new Error('User not found');
 	}
 
-	const surveys = Survey.find({ user: req.user.id });
+	const surveys = await Survey.find({ user: req.user.id });
+
+	console.log(surveys);
+
 	res.status(200).json(surveys);
 });
 
@@ -61,7 +64,5 @@ const editSurvey = asyncHandler(async (req, res) => {
 
 module.exports = {
 	newSurvey,
-	getSurvey,
-	getSurveys,
-	editSurvey,
+	fetchSurveys,
 };

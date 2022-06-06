@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { IoArrowBack } from 'react-icons/io5';
 import AddQuestion from '../components/AddQuestion';
 import SurveyItem from '../components/SurveyItem';
-import { newSurvey } from '../services/surveyApi';
+import surveyService from '../features/surveys/surveyApi';
 
 interface Props {
 	toggleCreateNew: any;
@@ -73,7 +73,7 @@ const NewSurvey: React.FC<Props> = ({ toggleCreateNew }) => {
 	const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		console.log(survey);
-		const retval = await newSurvey(survey);
+		const retval = await surveyService.newSurvey(survey);
 		console.log('Saved');
 		console.log(retval);
 	};
