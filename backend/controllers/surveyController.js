@@ -8,8 +8,6 @@ const newSurvey = asyncHandler(async (req, res) => {
 		res.status(400);
 	}
 
-	console.log(req.body);
-
 	const survey = await Survey.create({
 		user: req.user.id,
 		questions: req.body,
@@ -31,9 +29,6 @@ const fetchSurveys = asyncHandler(async (req, res) => {
 	}
 
 	const surveys = await Survey.find({ user: req.user.id });
-
-	console.log(surveys);
-
 	res.status(200).json(surveys);
 });
 
