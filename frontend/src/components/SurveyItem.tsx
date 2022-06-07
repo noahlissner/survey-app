@@ -22,7 +22,7 @@ interface Option {
 }
 
 interface IItem {
-  type: string;
+  surveyType: string;
   name: string;
   question: string;
   id: string;
@@ -103,7 +103,8 @@ const SurveyItem: React.FC<Props> = ({ item, onChange, createOption }) => {
               value={item.question}
             />
           </div>
-          {item.type === "Multiple Choice" || item.type === "Checkboxes" ? (
+          {item.surveyType === "Multiple Choice" ||
+          item.surveyType === "Checkboxes" ? (
             <div>
               <button onClick={() => createOption(item.id)}>New Option</button>
               <div className="flex flex-wrap">
