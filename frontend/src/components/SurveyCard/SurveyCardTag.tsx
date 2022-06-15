@@ -6,7 +6,6 @@ interface Props {
 }
 
 const SurveyCardTag: React.FC<Props> = ({ title, color }) => {
-  console.log(color);
   return (
     <div
       style={{ background: color }}

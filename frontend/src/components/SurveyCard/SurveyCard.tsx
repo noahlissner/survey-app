@@ -1,7 +1,13 @@
 import React from "react";
+import { IItem, IQuestion } from "../../models/Survey";
 import SurveyCardTag from "./SurveyCardTag";
 
-const SurveyCard = () => {
+interface Props {
+  item: IQuestion;
+  selectEdit: any;
+}
+
+const SurveyCard: React.FC<Props> = ({ item, selectEdit }) => {
   return (
     <div className="flex flex-col bg-blue-600 w-[225px] text-white rounded-xl">
       <SurveyCardTag title="Published" color="#40D96B" />
@@ -22,7 +28,10 @@ const SurveyCard = () => {
             Open
           </button>
           <div className="flex gap-[15px]">
-            <button className="survey-card-btn bg-[#D9AE40] hover:bg-[#c29b37]">
+            <button
+              className="survey-card-btn bg-[#D9AE40] hover:bg-[#c29b37]"
+              onClick={() => selectEdit(item._id)}
+            >
               Edit
             </button>
             <button className="survey-card-btn bg-[#ff0000] hover:bg-[#e80000]">

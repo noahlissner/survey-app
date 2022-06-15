@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Reorder,
   useMotionValue,
@@ -5,7 +6,6 @@ import {
   motion,
   AnimatePresence,
 } from "framer-motion";
-import React, { useState } from "react";
 import {
   IoMenu,
   IoChevronDown,
@@ -15,19 +15,7 @@ import {
   IoCheckboxOutline,
   IoCalendarClearOutline,
 } from "react-icons/io5";
-
-interface Option {
-  id: string;
-  text: string;
-}
-
-interface IItem {
-  surveyType: string;
-  name: string;
-  question: string;
-  id: string;
-  options?: Option[];
-}
+import { IItem } from "../models/Survey";
 
 interface Props {
   item: IItem;
