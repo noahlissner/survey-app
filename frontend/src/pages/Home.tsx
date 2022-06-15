@@ -1,22 +1,29 @@
 import Dashboard from "../containers/Dashboard";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import Sidebar from "../containers/Sidebar";
 import DashboardTopNav from "../components/DashboardTopNav";
 import Settings from "../containers/Settings/Settings";
 
 // Redux
-import { useSelector } from "react-redux";
-import { RootState } from "../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../app/store";
 import Surveys from "../containers/Surveys";
+import { fetchSurveys } from "../features/surveys/surveySlice";
 
 const Home: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const currentPage = useSelector((state: RootState) => state.page.value);
 
+  const dispatch = useDispatch<AppDispatch>();
+
   if (!user) {
     return <Navigate to="/" replace />;
   }
+
+  useEffect(() => {
+    dispatch(fetchSurveys());
+  });
 
   return (
     <div className="flex h-screen">
