@@ -11,6 +11,7 @@ import { login, reset } from "../features/auth/authSlice";
 import { fetchSurveys } from "../features/surveys/surveySlice";
 import { AppDispatch, RootState } from "../app/store";
 import Navigation from "../components/Navigation";
+import { ToastContainer, toast } from "react-toastify";
 
 interface Login {
   email: string;
@@ -18,6 +19,18 @@ interface Login {
 }
 
 const Login: React.FC = () => {
+  const notify = (message: string) => {
+    toast(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   const [formData, setFormData] = useState<Login>({
     email: "",
     password: "",
@@ -37,12 +50,12 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      notify("🚨 " + message);
     }
 
     if (isSuccess || user) {
       dispatch(fetchSurveys());
-      navigate("/");
+      navigate("/dashboard");
     }
 
     dispatch(reset());
