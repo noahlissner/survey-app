@@ -14,7 +14,7 @@ const Landing: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/dashboard");
+      navigate("/");
     }
   });
   return (
