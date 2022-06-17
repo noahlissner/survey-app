@@ -27,12 +27,19 @@ class Questions {
   ) {}
 }
 
+interface INewSurvey {
+  name: string;
+  questions: Questions[];
+  _id?: string;
+}
+
 const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
-  const [survey, setSurvey] = useState<Questions[]>([]);
+  const [surveyQuestions, setSurveyQuestions] = useState<Questions[]>([]);
+  const [surveyName, setSurveyName] = useState<string>("");
 
   const handleClick = (e: any) => {
-    setSurvey([
-      ...survey,
+    setSurveyQuestions([
+      ...surveyQuestions,
       new Questions(e.target.innerText, "New Question", "", uuidv4(), []),
     ]);
   };
@@ -42,9 +49,9 @@ const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
     optionId: string,
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const index: number = survey.findIndex((x) => x.id === id);
+    const index: number = surveyQuestions.findIndex((x) => x.id === id);
     let propName: string = e.target.name;
-    let newArr = [...survey];
+    let newArr = [...surveyQuestions];
 
     if (propName === "name") {
       newArr[index].name = e.target.value;
@@ -60,19 +67,30 @@ const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
       });
     }
 
-    setSurvey(newArr);
+    setSurveyQuestions(newArr);
   };
 
   const newOption = (id: string) => {
-    let index = survey.findIndex((x) => x.id === id);
-    let newArr = [...survey];
+    let index = surveyQuestions.findIndex((x) => x.id === id);
+    let newArr = [...surveyQuestions];
     newArr[index].options?.push(new Option(uuidv4(), "Option"));
-    setSurvey(newArr);
+    setSurveyQuestions(newArr);
   };
 
   const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const retval = await surveyService.newSurvey(survey);
+
+    const tempSurvey: INewSurvey = {
+      name: surveyName,
+      questions: surveyQuestions,
+      _id: surveyToEdit._id,
+    };
+
+    if (surveyToEdit) {
+      console.log(tempSurvey);
+    }
+
+    const retval = await surveyService.newSurvey(tempSurvey, "");
   };
 
   const handlePublish = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -90,15 +108,16 @@ const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
           item.id,
           []
         );
-        console.log(question);
         item.options?.forEach((opt) => {
           const option = new Option(opt.id, opt.text);
           question.options?.push(option);
         });
         tempArr.push(question);
       });
-      setSurvey(tempArr);
+      setSurveyQuestions(tempArr);
     }
+
+    console.log(surveyToEdit);
   }, []);
 
   return (
@@ -133,16 +152,21 @@ const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
         {/* Main grid */}
         <section className="flex flex-col relative mt-7 rounded-t-[80px] w-full h-full bg-blue-600 overflow-hidden">
           <div className="bg-blue-500 h-[120px] flex items-center justify-center">
-            <h2 className="text-3xl">Survey #1</h2>
+            <input
+              onChange={(e) => setSurveyName(e.target.value)}
+              value={surveyName}
+              className="text-3xl bg-transparent outline-none placeholder-white"
+              placeholder="Survey name..."
+            />
           </div>
           {/* Survey grid */}
           <Reorder.Group
             axis="y"
-            values={survey}
-            onReorder={setSurvey}
+            values={surveyQuestions}
+            onReorder={setSurveyQuestions}
             className="flex-1 mx-[100px] flex flex-col gap-[35px] mt-[35px]"
           >
-            {survey.map((item: IItem) => (
+            {surveyQuestions.map((item: IItem) => (
               <SurveyItem
                 item={item}
                 key={item.id}

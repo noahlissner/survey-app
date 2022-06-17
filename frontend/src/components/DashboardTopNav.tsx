@@ -28,7 +28,7 @@ const DashboardTopNav: React.FC = () => {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
+    navigate("/landing");
   };
 
   return (

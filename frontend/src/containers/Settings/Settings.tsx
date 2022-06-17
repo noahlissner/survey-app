@@ -14,11 +14,11 @@ const Settings = () => {
   };
 
   return (
-    <div className="h-full flex p-[100px] pt-[50px]">
+    <div className="h-full flex flex-col lg:flex-row p-[50px] xl:p-[100px] xl:pt-[50px]">
       <section>
         <HomeTitle title="Settings" />
-        <div>
-          <ul className="flex flex-col gap-5 mt-8">
+        <div className="mb-10 lg:mb-0">
+          <ul className="flex flex-row justify-between lg:flex-col gap-5 mt-8">
             <SettingsNavLink
               title="General"
               onClick={handleClick}
