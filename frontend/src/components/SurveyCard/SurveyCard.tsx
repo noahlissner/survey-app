@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IItem, IQuestion } from "../../models/Survey";
 import SurveyCardTag from "./SurveyCardTag";
 
@@ -12,7 +13,7 @@ const SurveyCard: React.FC<Props> = ({ item, selectEdit }) => {
     <div className="flex flex-col bg-blue-600 w-[225px] text-white rounded-xl">
       <SurveyCardTag title="Published" color="#40D96B" />
       <main className="flex flex-col p-5 pt-0 mt-2">
-        <h1 className="text-2xl font-medium mb-5">Survey #1</h1>
+        <h1 className="text-2xl font-medium mb-5">{item.name}</h1>
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between text-sm">
             <span>Views</span>
@@ -24,9 +25,13 @@ const SurveyCard: React.FC<Props> = ({ item, selectEdit }) => {
           </div>
         </div>
         <div className="flex flex-col gap-3 mt-[50px]">
-          <button className="survey-card-btn bg-blue-400 hover:bg-blue-450">
+          <Link
+            to={`/surveys/${item._id}`}
+            target="_blank"
+            className="survey-card-btn bg-blue-400 hover:bg-blue-450 flex items-center justify-center"
+          >
             Open
-          </button>
+          </Link>
           <div className="flex gap-[15px]">
             <button
               className="survey-card-btn bg-[#D9AE40] hover:bg-[#c29b37]"

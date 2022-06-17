@@ -7,6 +7,8 @@ import AddQuestion from "../components/AddQuestion";
 import SurveyItem from "../components/SurveyItem";
 import surveyService from "../features/surveys/surveyApi";
 import { IItem, IQuestion } from "../models/Survey";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
 interface Props {
   closeBuilder?: any;
@@ -30,12 +32,19 @@ class Questions {
 interface INewSurvey {
   name: string;
   questions: Questions[];
-  _id?: string;
+}
+
+interface IEditedSurvey {
+  name: string;
+  questions: Questions[];
+  _id: string;
 }
 
 const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
   const [surveyQuestions, setSurveyQuestions] = useState<Questions[]>([]);
   const [surveyName, setSurveyName] = useState<string>("");
+
+  const { user } = useSelector((state: RootState) => state.auth);
 
   const handleClick = (e: any) => {
     setSurveyQuestions([
@@ -80,17 +89,21 @@ const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
   const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const tempSurvey: INewSurvey = {
-      name: surveyName,
-      questions: surveyQuestions,
-      _id: surveyToEdit._id,
-    };
-
     if (surveyToEdit) {
-      console.log(tempSurvey);
+      const tempEditedSurvey: IEditedSurvey = {
+        name: surveyName,
+        questions: surveyQuestions,
+        _id: surveyToEdit._id,
+      };
+      await surveyService.updateSurvey(tempEditedSurvey, user.token);
     }
 
-    const retval = await surveyService.newSurvey(tempSurvey, "");
+    const tempNewSurvey: INewSurvey = {
+      name: surveyName,
+      questions: surveyQuestions,
+    };
+
+    const retval = await surveyService.newSurvey(tempNewSurvey, user.token);
   };
 
   const handlePublish = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -114,10 +127,11 @@ const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
         });
         tempArr.push(question);
       });
+
+      setSurveyName(surveyToEdit.name);
+
       setSurveyQuestions(tempArr);
     }
-
-    console.log(surveyToEdit);
   }, []);
 
   return (
@@ -155,7 +169,7 @@ const SurveyBuilder: React.FC<Props> = ({ closeBuilder, surveyToEdit }) => {
             <input
               onChange={(e) => setSurveyName(e.target.value)}
               value={surveyName}
-              className="text-3xl bg-transparent outline-none placeholder-white"
+              className="text-center text-3xl bg-transparent outline-none placeholder-white"
               placeholder="Survey name..."
             />
           </div>

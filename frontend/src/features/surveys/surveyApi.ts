@@ -14,6 +14,17 @@ const newSurvey = async (surveyData: any, token: string) => {
   return response.data;
 };
 
+const updateSurvey = async (surveyData: any, token: string) => {
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(API_URL + "edit", surveyData, config);
+  return response.data;
+};
+
 const fetchSurveys = async (_id: string, token: string) => {
   const config = {
     headers: {
@@ -27,6 +38,7 @@ const fetchSurveys = async (_id: string, token: string) => {
 
 const surveyService = {
   newSurvey,
+  updateSurvey,
   fetchSurveys,
 };
 

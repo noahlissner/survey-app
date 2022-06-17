@@ -39,23 +39,22 @@ const editSurvey = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  const survey = await Survey.findOne({ _id: req.body.id });
+  const survey = await Survey.findOne({ _id: req.body._id });
+
   if (survey.user._id != req.user.id) {
     res.status(401);
     throw new Error("Not authorized");
   }
 
+  const data = { name: req.body.name, questions: req.body.questions };
+
   const editedSurvey = await Survey.findOneAndUpdate(
-    { _id: req.body.id },
-    req.body.questions,
+    { _id: req.body._id },
+    data,
     { new: true }
   );
 
-  res.status(200).json({
-    _id: editedSurvey.id,
-    questions: editedSurvey.questions,
-    access: editedSurvey.access,
-  });
+  res.status(200);
 });
 
 const surveyAccess = asyncHandler(async (req, res) => {
@@ -65,6 +64,7 @@ const surveyAccess = asyncHandler(async (req, res) => {
 
 module.exports = {
   newSurvey,
+  editSurvey,
   fetchSurveys,
   surveyAccess,
 };

@@ -14,6 +14,7 @@ export interface IItem {
 
 export interface IQuestion {
   access?: any;
+  name: string;
   createdAt: string;
   questions: IItem[];
   updatedAt: string;
