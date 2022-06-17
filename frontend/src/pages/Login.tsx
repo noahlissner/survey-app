@@ -55,7 +55,7 @@ const Login: React.FC = () => {
 
     if (isSuccess || user) {
       dispatch(fetchSurveys());
-      navigate("/dashboard");
+      navigate("/");
     }
 
     dispatch(reset());
